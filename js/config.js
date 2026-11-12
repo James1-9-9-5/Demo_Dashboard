@@ -9,6 +9,24 @@ window.SITE = {
   community: "[Community Name]",                 // e.g. the village or reserve name
   siteName: "Maintenance Management",            // shown after the community name
 
+  // Optional greeting in the Nation's language, shown above the home headline.
+  // Leave as "" to hide it.
+  greeting: "[Greeting in the Nation's language]",
+
+  // Notice banner across the top of every page (water shutoffs, closures, etc.).
+  // level: "info" (green), "warning" (amber) or "alert" (red). Set show: false to hide.
+  notice: {
+    show: true,
+    level: "info",
+    text: "Example notice: the Maintenance Office is closed on Friday. Urgent problems can still be reported online.",
+    link: "",              // optional URL for "More details"
+    id: "notice-1"         // change this when you post a new notice so people who closed the old one see it
+  },
+
+  // Footer details
+  about: "This portal is run by the Maintenance Department. It connects community members and staff to the reporting form, dashboards and records used to look after community buildings, homes and equipment.",
+  lastUpdated: "November 2026",
+
   // Contacts
   officeLabel: "Maintenance Office",
   officePhone: "000-000-0000",
