@@ -25,6 +25,13 @@
     if (S.reportUrl && S.reportUrl !== "#") { el.href = S.reportUrl; el.target = "_blank"; el.rel = "noopener"; }
     else { el.href = "#"; el.addEventListener("click", soon); }
   });
+  // Logo: swap the placeholder for the real logo when one is set
+  if (S.logo) document.querySelectorAll("[data-logo]").forEach(function (el) {
+    var img = new Image();
+    img.src = S.logo; img.alt = ""; img.className = "logo-img" + (el.classList.contains("sm") ? " sm" : "");
+    el.replaceWith(img);
+  });
+
   // Hide optional bits that are empty in config.js
   document.querySelectorAll("[data-optional]").forEach(function (el) {
     var v = S[el.getAttribute("data-optional")];
@@ -105,17 +112,28 @@
   if (grid && S.services) {
     var lock = '<svg class="icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>';
     var arrow = '<svg class="icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
-    var icons = {
-      Dashboard: '<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>',
-      Survey: '<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/>',
-      Report: '<path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 14h8M8 17h5"/>',
-      Dataset: '<ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/>',
-      Files: '<path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>',
-      "Stock Levels": '<path d="M3 7l9-4 9 4-9 4zM3 12l9 4 9-4M3 17l9 4 9-4"/>',
-      Transactions: '<path d="M4 8h14l-3-3M20 16H6l3 3"/>'
+    // Duotone icon set: 24px grid, 1.75 stroke, soft tinted fill behind the line work
+    var DUO = {
+      Dashboard: ['<rect x="3" y="4" width="18" height="16" rx="2.5"/>', '<rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="M7.5 16v-3M12 16V8.5M16.5 16v-5.5"/>'],
+      Survey: ['<rect x="5" y="4.5" width="14" height="16.5" rx="2.5"/>', '<rect x="5" y="4.5" width="14" height="16.5" rx="2.5"/><path d="M9 4.5V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v.5"/><path d="M8.5 10.5l1.2 1.2 2.3-2.4M14 11h2M8.5 15.5l1.2 1.2 2.3-2.4M14 16h2"/>'],
+      Report: ['<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/>', '<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/>'],
+      Dataset: ['<path d="M5 6v12c0 1.7 3.1 3 7 3s7-1.3 7-3V6z"/>', '<ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v12c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12c0 1.7 3.1 3 7 3s7-1.3 7-3"/>'],
+      Files: ['<path d="M3 7.5A2.5 2.5 0 0 1 5.5 5H9l2 2h7.5A2.5 2.5 0 0 1 21 9.5v8a2.5 2.5 0 0 1-2.5 2.5h-13A2.5 2.5 0 0 1 3 17.5z"/>', '<path d="M3 7.5A2.5 2.5 0 0 1 5.5 5H9l2 2h7.5A2.5 2.5 0 0 1 21 9.5v8a2.5 2.5 0 0 1-2.5 2.5h-13A2.5 2.5 0 0 1 3 17.5z"/><path d="M3 10h18"/>'],
+      "Stock Levels": ['<path d="M3.5 8L12 4l8.5 4v8L12 20l-8.5-4z"/>', '<path d="M3.5 8L12 4l8.5 4v8L12 20l-8.5-4z"/><path d="M3.5 8L12 12l8.5-4M12 12v8"/>'],
+      Transactions: ['<circle cx="12" cy="12" r="9"/>', '<circle cx="12" cy="12" r="9"/><path d="M8 10h8l-2.5-2.5M16 14H8l2.5 2.5"/>'],
+      wrench: ['<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.8-3.8a6 6 0 0 1-7.9 7.9l-6.9 6.9a2.1 2.1 0 0 1-3-3l6.9-6.9a6 6 0 0 1 7.9-7.9z"/>', '<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.8-3.8a6 6 0 0 1-7.9 7.9l-6.9 6.9a2.1 2.1 0 0 1-3-3l6.9-6.9a6 6 0 0 1 7.9-7.9z"/>'],
+      house: ['<path d="M4 10.5L12 4l8 6.5V19a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 19z"/>', '<path d="M4 10.5L12 4l8 6.5V19a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 19z"/><path d="M10 20.5V15h4v5.5"/>'],
+      lifebuoy: ['<circle cx="12" cy="12" r="9"/>', '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.75"/><path d="M5.6 5.6l3.7 3.7M14.7 14.7l3.7 3.7M18.4 5.6l-3.7 3.7M9.3 14.7l-3.7 3.7"/>'],
+      box: ['<path d="M3.5 8L12 4l8.5 4v8L12 20l-8.5-4z"/>', '<path d="M3.5 8L12 4l8.5 4v8L12 20l-8.5-4z"/><path d="M3.5 8L12 12l8.5-4M12 12v8M7.8 6l8.4 4.1"/>'],
+      book: ['<path d="M4 19.5v-14A2.5 2.5 0 0 1 6.5 3H20v14H6.5A2.5 2.5 0 0 0 4 19.5z"/>', '<path d="M4 19.5v-14A2.5 2.5 0 0 1 6.5 3H20v14H6.5A2.5 2.5 0 0 0 4 19.5zm0 0A2.5 2.5 0 0 0 6.5 22H20v-5"/><path d="M8.5 7.5h7M8.5 11h5"/>'],
+      truck: ['<path d="M2.5 6h11v11h-11z"/>', '<path d="M2.5 6h11v11h-11zM13.5 9.5h4l3 3.5V17h-7"/><circle cx="7" cy="17.5" r="2"/><circle cx="17" cy="17.5" r="2"/>'],
+      water: ['<path d="M12 3s6.5 7 6.5 11.5a6.5 6.5 0 0 1-13 0C5.5 10 12 3 12 3z"/>', '<path d="M12 3s6.5 7 6.5 11.5a6.5 6.5 0 0 1-13 0C5.5 10 12 3 12 3z"/><path d="M9 15a3 3 0 0 0 3 3"/>'],
+      bolt: ['<path d="M13 2.5L4.5 13.5H12l-1 8 8.5-11H12z"/>', '<path d="M13 2.5L4.5 13.5H12l-1 8 8.5-11H12z"/>'],
+      tree: ['<path d="M12 2.5l6 8h-3l4 6H5l4-6H6z"/>', '<path d="M12 2.5l6 8h-3l4 6H5l4-6H6zM12 16.5v5"/>']
     };
-    var svg = function (label) {
-      return '<svg class="icon" viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + (icons[label] || icons.Dashboard) + "</svg>";
+    var svg = function (name, size) {
+      var d = DUO[name] || (/^Module/.test(name) ? DUO.book : DUO.Dashboard), s = size || 26;
+      return '<svg class="icon duo" viewBox="0 0 24 24" width="' + s + '" height="' + s + '" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><g class="duo-fill" fill="currentColor" stroke="none">' + d[0] + "</g>" + d[1] + "</svg>";
     };
     S.services.forEach(function (svc) {
       var card = document.createElement("article");
@@ -125,16 +143,16 @@
         return '<button role="tab" aria-selected="' + (i === 0) + '" data-i="' + i + '">' + m.label + "</button>";
       }).join("");
       card.innerHTML =
-        '<header class="tool-head"><span class="lock" title="Sign-in required">' + lock + "</span>" +
-        "<h3>" + svc.title + '</h3><p>' + svc.blurb + "</p></header>" +
+        '<header class="tool-head"><span class="svc-icon">' + svg(svc.icon || "wrench", 28) + '</span><span class="lock" title="Sign-in required">' + lock + "</span>" +
+        "<div><h3>" + svc.title + '</h3><p>' + svc.blurb + "</p></header>" +
         '<div class="tool-tabs" role="tablist" aria-label="' + svc.title + ' views">' + tabs + "</div>" +
         '<a class="tool-panel" href="#"><span class="icon-badge"></span><span class="tool-copy"><strong></strong><span></span></span><span class="go">' + arrow + "</span></a>";
       var panel = card.querySelector(".tool-panel");
       function select(i) {
         var m = svc.modes[i];
         card.querySelectorAll("[role=tab]").forEach(function (b, j) { b.setAttribute("aria-selected", i === j); });
-        panel.querySelector(".icon-badge").innerHTML = svg(m.label);
-        panel.querySelector("strong").textContent = "Open " + m.label.toLowerCase();
+        panel.querySelector(".icon-badge").innerHTML = svg(m.label, 24);
+        panel.querySelector("strong").textContent = /^Module/.test(m.label) ? "Open " + m.label : "Open " + m.label.toLowerCase();
         panel.querySelector(".tool-copy span").textContent = m.text;
         var real = m.url && m.url !== "#";
         panel.href = real ? m.url : "#";

@@ -9,6 +9,10 @@ window.SITE = {
   community: "[Community Name]",                 // e.g. the village or reserve name
   siteName: "Maintenance Management",            // shown after the community name
 
+  // Logo: put the Nation's logo in /images and set its path here, e.g. "images/logo.png".
+  // Leave as "" to show the "Nation's logo" placeholder.
+  logo: "",
+
   // Optional greeting in the Nation's language, shown above the home headline.
   // Leave as "" to hide it.
   greeting: "[Greeting in the Nation's language]",
@@ -41,6 +45,7 @@ window.SITE = {
   services: [
     {
       id: "general",
+      icon: "wrench",           // wrench, house, lifebuoy, box, book, truck, water, bolt or tree
       title: "General Maintenance",
       blurb: "Work orders, assignments and progress for buildings, grounds and community assets.",
       modes: [
@@ -52,6 +57,7 @@ window.SITE = {
     },
     {
       id: "housing",
+      icon: "house",           // wrench, house, lifebuoy, box, book, truck, water, bolt or tree
       title: "Housing Maintenance",
       blurb: "House condition, inspection status and housing work orders in one view.",
       modes: [
@@ -63,18 +69,21 @@ window.SITE = {
       ]
     },
     {
-      id: "emergency",
-      title: "Emergency Equipment",
-      blurb: "Checks and servicing for emergency response equipment and supplies.",
+      id: "modules",
+      icon: "book",           // wrench, house, lifebuoy, box, book, truck, water, bolt or tree
+      title: "Modules",
+      blurb: "Reference modules for the maintenance system: how it works, how to use it, and how work is planned and reviewed.",
       modes: [
-        { label: "Dashboard", text: "Equipment readiness and upcoming checks.", url: "#" },
-        { label: "Survey", text: "Record an equipment check or service.", url: "#" },
-        { label: "Report", text: "Readiness summary for review.", url: "#" },
-        { label: "Dataset", text: "Equipment list and check history.", url: "#" }
+        { label: "Module 1", text: "[Module 1 title]: a short description of what it covers.", url: "#" },
+        { label: "Module 2", text: "[Module 2 title]: a short description of what it covers.", url: "#" },
+        { label: "Module 3", text: "[Module 3 title]: a short description of what it covers.", url: "#" },
+        { label: "Module 4", text: "[Module 4 title]: a short description of what it covers.", url: "#" },
+        { label: "Module 5", text: "[Module 5 title]: a short description of what it covers.", url: "#" }
       ]
     },
     {
       id: "inventory",
+      icon: "box",           // wrench, house, lifebuoy, box, book, truck, water, bolt or tree
       title: "Inventory Tracker",
       blurb: "Parts, materials and tools: what is on hand and what has moved.",
       modes: [

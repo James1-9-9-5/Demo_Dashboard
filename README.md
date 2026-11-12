@@ -11,13 +11,15 @@ A blank, community-neutral maintenance portal: plain HTML, CSS and JavaScript, r
 ## Make it yours
 1. **`js/config.js`** is the one file to edit:
    - Nation and community names, and an optional greeting in the Nation's language (set it to `""` to hide it)
+   - The icon for each staff service (`wrench`, `house`, `lifebuoy`, `box`, `truck`, `water`, `bolt` or `tree`)
    - The **notice banner** text, its colour (`info`, `warning` or `alert`), and on/off. Change `id` whenever you post a new notice.
    - Phone numbers, email, office hours, the footer "about" text and the "last updated" date
    - The public report-form link, every staff tool link, and the safety tips
 
    Links left as `#` show "Link coming soon" when clicked.
 2. **Images** in `images/` (keep the same file names, or update them in the HTML):
-   - `logo.png`: community logo (square). Also update `favicon-32.png` (32×32) and `apple-touch-icon.png` (180×180).
+   - **Logo:** add the Nation's logo (e.g. `images/logo.png`) and set `logo: "images/logo.png"` in `config.js`. Until then a "Nation's logo" placeholder shows in the header and footer.
+   - `favicon.svg`, `favicon-32.png` and `apple-touch-icon.png`: neutral placeholder browser icons. Replace with versions of the logo.
    - `hero-1.jpg` to `hero-5.jpg`: home slideshow (1600×900)
    - `door-community.jpg` and `door-staff.jpg`: home card photos (1200×600)
    - `banner-staff.jpg` and `banner-community.jpg`: page header photos (1200×800)
