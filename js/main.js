@@ -148,8 +148,8 @@
       if (dots[si]) dots[si].setAttribute("aria-current", "true");
       caption();
     }
-    if (dotsBox && slides.length > 1) {
-      slides.forEach(function (s, i) {
+    if (slides.length > 1) {
+      if (dotsBox) slides.forEach(function (s, i) {
         var d = document.createElement("button");
         d.type = "button"; d.className = "dot";
         d.setAttribute("aria-label", "Show photo " + (i + 1) + " of " + slides.length);
@@ -159,7 +159,7 @@
       });
       var pb = photo.querySelector(".slide-pause");
       if (pb) pauseButton(pb, "slideshow", function (p) { userPaused = p; });
-      if (still && pb) pb.click();
+      if (still && pb) pb.click();  // with no pause button, reduced-motion users still get a still photo (userPaused starts true)
       if (photo.classList.contains("hero-photo")) {
         photo.addEventListener("mouseenter", function () { hover = true; });
         photo.addEventListener("mouseleave", function () { hover = false; });
@@ -168,10 +168,10 @@
     } else if (dotsBox) dotsBox.parentNode.hidden = true;
   }
 
-  // Tip ticker: the current season's maintenance tips mixed with the safety tips
+  // Safety tip ticker: the safety tips, plus the current season's tips during that season only
   var month = new Date().getMonth() + 1;
   var season = (S.seasons || []).filter(function (s) { return (s.months || []).indexOf(month) > -1; })[0];
-  var seasonal = season ? season.tips.map(function (t) { return { l: season.name + " tip", t: t }; }) : [];
+  var seasonal = season ? season.tips.map(function (t) { return { l: "Safety tip", t: t }; }) : [];
   var safety = (S.safetyTips || []).map(function (t) { return { l: "Safety tip", t: t }; });
   var TIPS = [];
   for (var k = 0; k < Math.max(seasonal.length, safety.length); k++) {

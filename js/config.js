@@ -46,15 +46,15 @@ window.SITE = {
 
   // Contacts
   officeLabel: "Maintenance Office",
-  officePhone: "000-000-0000",
-  emergencyPhone: "000-000-0000",
-  officeEmail: "maintenance@example.org",
+  officePhone: "+1 (788) 231-6651",
+  emergencyPhone: "+1 (788) 231-6651",
+  officeEmail: "admin@tapestryresearchgroup.com",
   officeHours: "Monday to Friday, 8:30 am – 4:30 pm",
 
   // Help for staff who can't get into the tools (shown at the bottom of the Staff page)
   staffHelp: {
     name: "the Maintenance Coordinator",
-    email: "admin@example.org",
+    email: "admin@tapestryresearchgroup.com",
     manualUrl: "#"          // link to the system manual or Module 4
   },
 
@@ -116,8 +116,8 @@ window.SITE = {
     }
   ],
 
-  // Seasonal maintenance tips. The current season's tips are mixed into the safety tip
-  // ticker automatically (labelled e.g. "Fall tip"), starting with a seasonal one.
+  // Seasonal maintenance tips. During each season, its tips are added to the safety tip
+  // ticker automatically (still labelled "Safety tip"). Other seasons' tips don't show.
   seasons: [
     { name: "Spring", months: [3, 4, 5], tips: [
       "Check roofs and gutters for winter damage",

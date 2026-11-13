@@ -533,3 +533,7 @@ main > section.contact-section:last-child{margin-bottom:0}
 .logo-img.sm{background:#fff;padding:5px;border-radius:6px}
 .hero-foot{border-top:0;position:relative}
 .hero-foot::before{content:"";position:absolute;left:1.5rem;right:1.5rem;top:0;height:1px;background:rgba(255,255,255,.16)}
+/* Long email addresses wrap instead of pushing the page wider on phones */
+.call > span:last-child{min-width:0}
+.call b,.mail-text{overflow-wrap:anywhere}
+.footer-contact a{min-width:0}
