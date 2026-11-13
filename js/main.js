@@ -32,6 +32,20 @@
     el.replaceWith(img);
   });
 
+  // Captions on page header photos
+  document.querySelectorAll(".page-photo [data-photo]").forEach(function (img) {
+    var p = (S.photos || {})[img.getAttribute("data-photo")];
+    var c = img.parentNode.querySelector(".photo-cap");
+    if (c && p && p.caption) c.textContent = p.caption; else if (c) c.hidden = true;
+  });
+
+  // Demo tag
+  if (S.demo) document.querySelectorAll(".footer-base").forEach(function (fb) {
+    var t = document.createElement("span");
+    t.className = "demo-tag"; t.title = S.demoNote || ""; t.textContent = "Demo site";
+    fb.firstElementChild.appendChild(t);
+  });
+
   // Staff help details
   var H = S.staffHelp || {};
   document.querySelectorAll("[data-help]").forEach(function (el) {
@@ -117,6 +131,14 @@
     if (document.readyState === "complete") warm(); else window.addEventListener("load", warm);
     var dotsBox = photo.querySelector(".slide-dots");
     var dots = [];
+    var cap = photo.querySelector(".photo-cap");
+    var PH = S.photos || {};
+    function caption() {
+      if (!cap) return;
+      var key = slides[si].getAttribute("data-photo"), c = PH[key] && PH[key].caption;
+      cap.innerHTML = c ? '<span class="cap-n">' + ("0" + (si + 1)).slice(-2) + "</span>" + c : (S.community || "");
+    }
+    caption();
     function show(i) {
       slides[si].classList.remove("active");
       if (dots[si]) dots[si].setAttribute("aria-current", "false");
@@ -124,6 +146,7 @@
       load(si); load(si + 1);
       slides[si].classList.add("active");
       if (dots[si]) dots[si].setAttribute("aria-current", "true");
+      caption();
     }
     if (dotsBox && slides.length > 1) {
       slides.forEach(function (s, i) {

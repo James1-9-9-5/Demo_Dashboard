@@ -5,8 +5,8 @@
 */
 window.SITE = {
   // Names
-  nation: "[Nation Name]",                       // e.g. "Example First Nation"
-  community: "[Community Name]",                 // e.g. the village or reserve name
+  nation: "Silver Creek Landing",                       // e.g. "Example First Nation"
+  community: "Silver Creek Landing",                 // e.g. the village or reserve name
   siteName: "Maintenance Management",            // shown after the community name
 
   // BRAND COLOURS: pick two colours from the Nation's logo and the whole site follows.
@@ -22,6 +22,10 @@ window.SITE = {
   // Leave as "" to show the "Nation's logo" placeholder.
   logo: "",
 
+  // DEMO MODE: shows a small "Demo site" tag in the footer. Set to false for a real community.
+  demo: true,
+  demoNote: "Sample community and content for demonstration.",
+
   // Optional greeting in the Nation's language, shown above the home headline.
   // Leave as "" to hide it.
   greeting: "[Greeting in the Nation's language]",
@@ -31,7 +35,7 @@ window.SITE = {
   notice: {
     show: true,
     level: "info",        // info (blue-grey), warning (amber) or alert (red)
-    text: "Example notice: the Maintenance Office is closed on Friday. Urgent problems can still be reported online.",
+    text: "Water shut-off on Harbour Road, Tuesday 9 am to 1 pm, for valve replacement. Please store water beforehand.",
     link: "",              // optional URL for "More details"
     id: "notice-1"         // change this when you post a new notice so people who closed the old one see it
   },
@@ -49,7 +53,7 @@ window.SITE = {
 
   // Help for staff who can't get into the tools (shown at the bottom of the Staff page)
   staffHelp: {
-    name: "[System administrator]",
+    name: "the Maintenance Coordinator",
     email: "admin@example.org",
     manualUrl: "#"          // link to the system manual or Module 4
   },
@@ -153,6 +157,21 @@ window.SITE = {
     { q: "Can I report for someone else?",
       a: "Yes. You can report a problem on behalf of an Elder, a neighbour or a family member. Add their location and the best way to reach them." }
   ],
+
+  // PHOTOS: where each photo is centred when it's cropped to fit (focus: "left% top%"),
+  // and the short field-log caption shown on it. "50% 50%" is the centre; "30% 40%" moves
+  // the crop left and up. Change these whenever you swap a photo.
+  photos: {
+    "hero-1": { focus: "35% 45%", caption: "Waterfront homes" },
+    "hero-2": { focus: "65% 35%", caption: "Framing a new build" },
+    "hero-3": { focus: "50% 55%", caption: "Roofing materials" },
+    "hero-4": { focus: "55% 62%", caption: "Village from above" },
+    "hero-5": { focus: "45% 32%", caption: "Field inspection" },
+    "community": { focus: "50% 58%" },
+    "staff": { focus: "42% 40%" },
+    "community-header": { focus: "40% 45%", caption: "Residential street" },
+    "staff-header": { focus: "60% 55%", caption: "Materials store" }
+  },
 
   // Rotating safety tips (home hero and Community page)
   safetyTips: [

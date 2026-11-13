@@ -51,4 +51,11 @@
     root.setProperty("--green-light", toHex(until(mix(accent, WHITE, 0.55), nav, 6, WHITE)));
     root.setProperty("--green-glow", "rgba(" + deep.map(Math.round).join(",") + ",.35)");
   }
+
+  // Photo focus points: centre each crop on the subject (set in config.js > photos)
+  var P = (window.SITE && window.SITE.photos) || {};
+  var rules = Object.keys(P).filter(function (k) { return P[k] && P[k].focus; }).map(function (k) {
+    return '[data-photo="' + k + '"]{object-position:' + P[k].focus + "}";
+  }).join("");
+  if (rules) { var st = document.createElement("style"); st.textContent = rules; document.head.appendChild(st); }
 })();

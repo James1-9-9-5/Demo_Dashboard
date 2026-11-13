@@ -17,11 +17,11 @@
 .p-logo{width:.95in;height:.75in;font-size:.6rem;border-color:rgba(255,255,255,.4);background:rgba(255,255,255,.08);color:#dfe5ee}
 .p-logo-img{height:.8in;width:auto;max-width:1.6in;background:#fff;border-radius:10px;padding:5px}
 .p-org{display:flex;flex-direction:column;line-height:1.15}
-.p-org strong{font-family:var(--head);font-weight:800;font-size:26pt;letter-spacing:-.02em}
+.p-org strong{font-family:var(--head);font-weight:800;font-stretch:112%;font-size:26pt;letter-spacing:-.02em}
 .p-org span{font-size:14pt;color:var(--green-light);font-weight:600}
 
 .p-hero{padding:.42in var(--pad) .1in}
-.p-hero h1{font-size:40pt;line-height:1.02;margin:0 0 .12in;letter-spacing:-.035em}
+.p-hero h1{font-size:40pt;line-height:1.02;margin:0 0 .12in;letter-spacing:-.025em;font-stretch:112%}
 .p-hero p{font-size:15pt;color:var(--navy-soft);margin:0;max-width:none}
 
 .p-qr{display:flex;align-items:center;gap:.45in;padding:.3in var(--pad)}
@@ -42,7 +42,7 @@
 .p-contacts{display:grid;grid-template-columns:1fr 1fr;gap:.18in;padding:0 var(--pad)}
 .p-call{border:1.5px solid var(--line-2);border-radius:.14in;padding:.16in .2in;display:flex;flex-direction:column;gap:.03in}
 .p-call small{font:700 9.5pt var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
-.p-call b{font:800 24pt/1.1 var(--head);color:var(--navy);letter-spacing:-.02em}
+.p-call b{font:800 24pt/1.1 var(--head);font-stretch:108%;font-variant-numeric:tabular-nums;color:var(--navy);letter-spacing:-.01em}
 .p-call span{font-size:10pt;color:var(--navy-soft)}
 .p-call.urgent{background:var(--red-bg);border-color:var(--red-line)}
 .p-call.urgent small,.p-call.urgent b{color:var(--red)}

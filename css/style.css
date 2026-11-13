@@ -10,15 +10,16 @@
   --info:#2c3e55; --info-bg:#eef2f7; --info-line:#d6dee9;
   --amber:#8a5a00; --amber-bg:#fff4dc; --amber-line:#f0d08a;
   --red:#a33a1c; --red-bg:#fcebe5; --red-line:#efbfae;
-  --head:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
-  --body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --head:"Archivo","Arial Narrow",system-ui,sans-serif;
+  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
   --r:14px; --r-sm:8px;
   --shadow:0 1px 2px rgba(27,30,39,.04),0 6px 20px rgba(27,30,39,.06);
   --shadow-lift:0 2px 6px rgba(27,30,39,.06),0 18px 40px rgba(27,30,39,.12);
 }
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:5.5rem}
-body{min-height:100vh;display:flex;flex-direction:column;margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.65 var(--body);-webkit-font-smoothing:antialiased;font-feature-settings:"cv11","ss01"}
+body{min-height:100vh;display:flex;flex-direction:column;margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.65 var(--body);-webkit-font-smoothing:antialiased}
 h1,h2,h3{font-family:var(--head);line-height:1.15;margin:0 0 .5em;font-weight:700;color:var(--navy);letter-spacing:-.02em}
 h1{font-size:clamp(2rem,4vw,3rem);font-weight:800;letter-spacing:-.03em}
 h2{font-size:clamp(1.55rem,2.8vw,2rem)}
@@ -386,3 +387,98 @@ p,li,.lead{text-wrap:pretty}
 .more .icon{width:18px;height:18px;transition:transform .15s}
 .more:hover .icon{transform:translateX(3px)}
 .contact-panel .kicker{color:var(--green-deep)}
+
+/* ---- Typography v9: Archivo headings, IBM Plex Sans text, IBM Plex Mono labels and numbers ---- */
+h1,h2,h3{font-stretch:112%;font-weight:750;letter-spacing:-.015em}
+h1{font-weight:800;letter-spacing:-.025em;line-height:1.04}
+.hero h1{font-size:clamp(2.3rem,4.3vw,3.5rem)}
+.page-head h1{font-size:clamp(2.2rem,4vw,3.1rem)}
+h2{line-height:1.12}
+h3{font-stretch:106%;letter-spacing:-.005em}
+.brand-text strong,.footer-brand strong{font-stretch:112%;font-weight:750}
+.kicker,.ticker-label,.site-footer h2,.now-tag,.pill,.p-scan-tag,.p-call small,.call small,.hero-meta li{font-family:var(--mono);letter-spacing:.02em}
+.kicker,.site-footer h2,.ticker-label{font-weight:500;font-size:.8rem;letter-spacing:.08em}
+.pill,.now-tag{font-weight:500}
+.call small{font-weight:500;font-size:.8rem}
+.hero-meta li{font-size:.88rem}
+.call b,.tel-num,.mail-text,.footer-contact,.urgent-box a{font-variant-numeric:tabular-nums}
+.call b{font-family:var(--mono);font-weight:500;font-size:1.15rem;letter-spacing:0}
+.steps li::before{font-family:var(--mono);font-weight:500;font-size:1.05rem;letter-spacing:.04em}
+.btn{font-family:var(--body);font-weight:600}
+.tool-copy strong,.door-cta,.poster-promo strong{font-family:var(--body);font-weight:600}
+.season h3{font-stretch:106%}
+
+/* ---- Photo treatment: same frame everywhere, field-log captions ---- */
+.hero-photo,.page-photo,.door-photo{isolation:isolate}
+.page-photo{position:relative;margin:0}
+.hero-photo::before,.page-photo::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1px rgba(255,255,255,.14);pointer-events:none;z-index:2}
+.photo-cap{font-family:var(--mono);font-size:.78rem;font-weight:500;letter-spacing:.02em;color:var(--navy);gap:.55rem}
+.photo-cap .cap-n{color:var(--green-deep);font-weight:500}
+.page-photo .photo-cap{position:absolute;left:.8rem;bottom:.8rem;z-index:3;display:inline-flex;align-items:center;background:rgba(255,255,255,.94);padding:.35rem .7rem;border-radius:999px}
+.page-photo::before{content:"";position:absolute;inset:auto 0 0 0;height:40%;background:linear-gradient(to top,rgba(20,28,45,.4),transparent);z-index:1;pointer-events:none}
+.page-photo img{position:relative;z-index:0}
+.hero h1{font-size:clamp(2.2rem,3.7vw,3.1rem);font-stretch:106%}
+.hero-meta li{font-family:var(--body);letter-spacing:0;font-size:.93rem}
+.hero h1{text-wrap:wrap}
+
+/* ---- v10: fewer boxes, more structure ----
+   Tighter corners, hairline borders instead of shadows, and some sections laid out on rules rather than in cards. */
+:root{--r:6px;--r-sm:4px;--shadow:none;--shadow-lift:0 1px 0 var(--line-2)}
+.hero-photo{border-radius:6px;box-shadow:none}
+.page-photo{border-radius:6px;box-shadow:none}
+.door,.tool-card,.report-card,.signin-note,.urgent-box,.call,.jump a,.tool-tabs button,.icon-badge,.svc-icon,.mi,.season-icon,.lock{border-radius:var(--r-sm)}
+.svc-icon{box-shadow:inset 0 0 0 1px var(--green-line)}
+.door{box-shadow:none}
+.door:hover{transform:none;border-color:var(--navy-soft);box-shadow:none}
+.door:hover .door-photo img{transform:scale(1.03)}
+.tool-card{box-shadow:none}
+.report-card{box-shadow:none}
+.pill,.photo-cap,.slide-ctrl,.page-photo .photo-cap{border-radius:3px}
+.slide-ctrl{box-shadow:none}
+
+/* Seasonal tips: columns on hairline rules, no cards */
+.season-grid{gap:0;border-top:1px solid var(--line-2);border-bottom:1px solid var(--line)}
+.season{background:none;border:0;border-left:1px solid var(--line);border-radius:0;box-shadow:none;padding:1.25rem 1.4rem 1.4rem}
+.season:first-child{border-left:0;padding-left:0}
+.season.now{border-color:var(--line);box-shadow:none;background:linear-gradient(to bottom,var(--green-mist),transparent 70%)}
+.season.now::before{content:"";position:absolute;left:0;right:0;top:-1px;height:3px;background:var(--green)}
+.season.now:first-child{padding-left:1.4rem}
+
+/* FAQ: plain rows divided by hairlines */
+.faq-list{gap:0;border-top:1px solid var(--line-2)}
+.faq-item{background:none;border:0;border-bottom:1px solid var(--line);border-radius:0}
+.faq-item[open]{box-shadow:none;border-color:var(--line)}
+.faq-item summary{padding:1.05rem 0}
+.faq-item summary:hover{background:none;color:var(--green-deep)}
+.faq-a{padding:0 2.5rem 1.15rem 0}
+.faq-sign{border-radius:3px}
+
+/* How-it-works steps: numbered columns on a rule */
+.steps{gap:0;border-top:1px solid var(--line-2)}
+.steps li{background:none;border:0;border-left:1px solid var(--line);border-radius:0;padding:1.25rem 1.4rem}
+.steps li:first-child{border-left:0;padding-left:0}
+
+/* Contact panel becomes a full-width band */
+.contact-section{padding:0!important;background:var(--green-mist);border-top:1px solid var(--green-line);border-bottom:1px solid var(--green-line)}
+.contact-section .wrap{padding-top:2.75rem;padding-bottom:2.75rem}
+.contact-panel{background:none;border:0;border-radius:0;box-shadow:none;padding:0}
+.contact-section .call{background:#fff}
+.contact-section .call.urgent{background:var(--red-bg)}
+.contact-section + .site-footer{margin-top:0}
+main > section.contact-section:last-child{margin-bottom:0}
+
+@media (max-width:980px){
+  .season{border-left:0;border-top:1px solid var(--line);padding-left:0}
+  .season-grid{border-top:0}
+  .season:nth-child(even){padding-left:1.4rem;border-left:1px solid var(--line)}
+  .season.now:first-child{padding-left:1.4rem}
+  .steps li{border-left:0;border-top:1px solid var(--line);padding-left:0}
+  .steps{border-top:0}
+  .steps li:nth-child(even){border-left:1px solid var(--line);padding-left:1.4rem}
+}
+@media (max-width:640px){
+  .season,.season:nth-child(even),.steps li,.steps li:nth-child(even){border-left:0;padding-left:0;padding-right:0}
+  .season.now{padding-left:1rem!important;padding-right:1rem}
+}
+
+.demo-tag{display:inline-block;margin-left:.75rem;font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--green-light);border:1px solid rgba(255,255,255,.22);padding:.1rem .45rem;border-radius:3px;vertical-align:1px}

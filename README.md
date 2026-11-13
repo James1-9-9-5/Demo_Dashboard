@@ -10,6 +10,11 @@ A blank, community-neutral maintenance portal: plain HTML, CSS and JavaScript, r
 - `community.html`: Report a problem. What to include, urgent contacts, and how a report becomes a work order. Prints cleanly for notice boards.
 - `404.html`: Not-found page
 
+## Demo mode
+This copy is set up as a demo for a fictional community, **Silver Creek Landing**, with a small "Demo site" tag in the footer. To set it up for a real community:
+1. In `js/config.js`, set `demo: false` and change `nation`, `community`, contacts, links and photos.
+2. Replace "Silver Creek Landing" in the `<title>` and description tags at the top of each HTML file, in `poster.html`, and in `manifest.webmanifest`.
+
 ## Make it yours
 1. **`js/config.js`** is the one file to edit:
    - **Brand colours:** set `brand.primary` (a dark colour) and `brand.accent` (a highlight colour), picked from the Nation's logo. Every button, icon, badge and tint updates, and shades are adjusted automatically so text stays readable.
@@ -36,7 +41,7 @@ A blank, community-neutral maintenance portal: plain HTML, CSS and JavaScript, r
 5. **Colours** are at the top of `css/style.css` (`--navy`, `--green` and so on). Text colours have been checked against WCAG AA contrast.
 
 ## Fonts
-Inter and Plus Jakarta Sans are stored in `/fonts` (no Google Fonts connection needed), under the SIL Open Font License. Licence files are in the same folder.
+Archivo (headings), IBM Plex Sans (text) and IBM Plex Mono (labels, phone numbers, photo captions) are stored in `/fonts`, so no Google Fonts connection is needed. All three use the SIL Open Font License, and the licence files are in the same folder.
 
 ## Install to phone
 The site is a Progressive Web App. On a phone, open the site and choose **Add to Home Screen** (Safari share menu on iPhone, or the ⋮ menu → **Install app** on Android). It then opens full-screen like an app, and if there's no signal it shows `offline.html` with the phone numbers. This only works on the live https site, not when opening the files locally.
@@ -48,6 +53,8 @@ The site is a Progressive Web App. On a phone, open the site and choose **Add to
 `poster.html` builds the QR code automatically. If `reportUrl` is set in `config.js`, the code goes straight to the report form. If not, it goes to the site's Community page. Choose Letter or A4, then **Print poster**. In the print dialog, turn on "Background graphics" and set margins to "None".
 
 ## Photos
+Each photo's crop point and caption are set in `js/config.js` under `photos`. `focus` is "left% top%": "50% 50%" centres the crop, "30% 40%" moves it left and up. The hero captions show as a numbered field-log label (01 Waterfront homes) and change with the slideshow. Update both whenever you swap a photo.
+
 All photos share one colour grade (slightly muted colour, cool shadows, warm highlights) so images from different sources look like a set. When you swap in new photos, keep a similar look or ask for the same grade to be applied.
 
 ## Publish on GitHub Pages
