@@ -23,7 +23,7 @@ A blank, community-neutral maintenance portal: plain HTML, CSS and JavaScript, r
    Links left as `#` show "Link coming soon" when clicked.
 2. **Images** in `images/` (keep the same file names, or update them in the HTML):
    - **Logo:** add the Nation's logo (e.g. `images/logo.png`) and set `logo: "images/logo.png"` in `config.js`. Until then a "Nation's logo" placeholder shows in the header and footer.
-   - `favicon.svg`, `favicon-32.png` and `apple-touch-icon.png`: neutral placeholder browser icons. Replace with versions of the logo.
+   - `favicon.svg`, `favicon-32.png`, `apple-touch-icon.png` and the `icon-*.png` app icons are "LOGO" placeholders. Replace them with versions of the Nation's logo.
    - `hero-1.jpg` to `hero-5.jpg`: home slideshow (about 1400 wide, landscape). File names must be lowercase: GitHub Pages treats `Hero-1.jpg` and `hero-1.jpg` as different files.
    - `community.jpg` and `staff.jpg`: home card photos (1200 wide)
    - `staff-header.jpg` and `community-header.jpg`: page header photos (1200 wide)
@@ -43,7 +43,7 @@ The site is a Progressive Web App. On a phone, open the site and choose **Add to
 `poster.html` builds the QR code automatically. If `reportUrl` is set in `config.js`, the code goes straight to the report form. If not, it goes to the site's Community page. Choose Letter or A4, then **Print poster**. In the print dialog, turn on "Background graphics" and set margins to "None".
 
 ## Photos
-All photos share one colour grade (slightly muted colour, navy-tinted shadows, warm highlights) so images from different sources look like a set. When you swap in new photos, keep a similar look or ask for the same grade to be applied.
+All photos share one colour grade (slightly muted colour, cool shadows, warm highlights) so images from different sources look like a set. When you swap in new photos, keep a similar look or ask for the same grade to be applied.
 
 ## Publish on GitHub Pages
 1. Upload everything in this folder to the root of the repository.

@@ -1,11 +1,11 @@
 /* Maintenance Management portal
-   Palette: navy + green (shared family with Tapestry), used with a lighter, service-first layout. */
+   Palette: navy + amber by default. Set brand.primary and brand.accent in js/config.js to change it. */
 :root{
-  --navy:#2b2e3c; --navy-2:#363a4c; --navy-soft:#4a4f63;
+  --navy:#1d3557; --navy-2:#2b4161; --navy-soft:#3f5370;
   /* Brand colours. These defaults are overwritten by brand.accent and brand.primary in js/config.js */
-  --navy-hover:#3b3f53;
-  --green:#58aa4b; --green-deep:#357a2d; --green-hover:#2c6a25; --green-ink:#24561e;
-  --green-tint:#e4f1e1; --green-mist:#f2f8f0; --green-line:#d4e6ce; --green-light:#b9e0b0; --green-glow:rgba(53,122,45,.35);
+  --navy-hover:#344968;
+  --green:#e07a2f; --green-deep:#a45a22; --green-hover:#914f1e; --green-ink:#794219;
+  --green-tint:#faebe0; --green-mist:#fdf6f0; --green-line:#f6dac5; --green-light:#f1c3a1; --green-glow:rgba(164,90,34,.35);
   --bg:#f6f7f4; --surface:#ffffff; --ink:#1b1e27; --muted:#5a6070; --line:#e2e6df; --line-2:#d3d9cf;
   --amber:#8a5a00; --amber-bg:#fff4dc; --amber-line:#f0d08a;
   --red:#a33a1c; --red-bg:#fcebe5; --red-line:#efbfae;

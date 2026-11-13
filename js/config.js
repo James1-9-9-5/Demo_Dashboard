@@ -14,8 +14,8 @@ window.SITE = {
   // accent  = highlight colour for links, icons and badges
   // Lighter and darker shades are worked out automatically, and text is kept readable.
   brand: {
-    primary: "#2b2e3c",
-    accent: "#58aa4b"
+    primary: "#1d3557",
+    accent: "#e07a2f"
   },
 
   // Logo: put the Nation's logo in /images and set its path here, e.g. "images/logo.png".
