@@ -69,7 +69,7 @@ window.SITE = {
       title: "General Maintenance",
       blurb: "Work orders, assignments and progress for buildings, grounds and community assets.",
       modes: [
-        { label: "Dashboard", text: "Live map and charts of open and closed work orders.", url: "#" },
+        { label: "Dashboard", text: "Live map and charts of open and closed work orders.", url: "https://www.arcgis.com/apps/dashboards/f437016e537040fda841f3f61f1c6580" },
         { label: "Survey", text: "Log a new deficiency or update a work order in the field.", url: "#" },
         { label: "Report", text: "Printable summary of work completed this period.", url: "#" },
         { label: "Dataset", text: "The underlying records, for filtering and export.", url: "#" }
