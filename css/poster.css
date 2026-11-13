@@ -1,0 +1,68 @@
+/* Printable QR poster */
+.poster-page{background:#e9ece6}
+.poster-toolbar{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:1rem;padding:.8rem 1.5rem;background:#fff;border-bottom:1px solid var(--line);box-shadow:var(--shadow)}
+.toolbar-mid{flex:1;display:flex;flex-direction:column;line-height:1.3}
+.toolbar-mid strong{font-family:var(--head);color:var(--navy)}
+.toolbar-mid span{font-size:.9rem;color:var(--muted)}
+.paper-toggle{display:flex;border:1px solid var(--line-2);border-radius:var(--r-sm);overflow:hidden}
+.paper-toggle button{font:600 .9rem var(--body);padding:.55rem .9rem;border:0;background:#fff;color:var(--navy-soft);cursor:pointer}
+.paper-toggle button[aria-pressed="true"]{background:var(--navy);color:#fff}
+.sheet-stage{display:flex;flex-direction:column;align-items:center;padding:2rem 1rem 3rem}
+
+.sheet{--pad:.55in;background:#fff;box-shadow:0 10px 40px rgba(27,30,39,.18);display:flex;flex-direction:column;overflow:hidden;color:var(--ink)}
+.sheet.letter{width:8.5in;height:11in}
+.sheet.a4{width:210mm;height:297mm}
+
+.p-top{display:flex;align-items:center;gap:.9rem;background:var(--navy);color:#fff;padding:.4in var(--pad) .35in;border-bottom:.09in solid var(--green)}
+.p-logo{width:.95in;height:.75in;font-size:.6rem;border-color:rgba(255,255,255,.4);background:rgba(255,255,255,.08);color:#dfe5ee}
+.p-logo-img{height:.8in;width:auto;max-width:1.6in;background:#fff;border-radius:10px;padding:5px}
+.p-org{display:flex;flex-direction:column;line-height:1.15}
+.p-org strong{font-family:var(--head);font-weight:800;font-size:26pt;letter-spacing:-.02em}
+.p-org span{font-size:14pt;color:var(--green-light);font-weight:600}
+
+.p-hero{padding:.42in var(--pad) .1in}
+.p-hero h1{font-size:40pt;line-height:1.02;margin:0 0 .12in;letter-spacing:-.035em}
+.p-hero p{font-size:15pt;color:var(--navy-soft);margin:0;max-width:none}
+
+.p-qr{display:flex;align-items:center;gap:.45in;padding:.3in var(--pad)}
+.qr-frame{flex:none;padding:.16in;border:.05in solid var(--navy);border-radius:.22in;background:#fff}
+.qr{width:2.85in;height:2.85in}
+.qr svg{width:100%;height:100%;display:block}
+.qr svg rect[fill="#ffffff"],.qr svg rect[fill="white"]{fill:#fff}
+.qr svg path{fill:var(--navy)}
+.p-scan-tag{display:inline-block;background:var(--green);color:var(--navy);font:800 20pt/1 var(--head);padding:.12in .2in;border-radius:.12in;margin-bottom:.16in;letter-spacing:-.01em}
+.p-scan p{font-size:14pt;color:var(--navy-soft);margin:0 0 .12in}
+.p-url{font:600 11pt var(--body);color:var(--green-ink)!important;overflow-wrap:anywhere}
+
+.p-steps{list-style:none;margin:0;padding:.1in var(--pad) .25in;display:grid;grid-template-columns:repeat(3,1fr);gap:.18in}
+.p-steps li{display:flex;gap:.12in;align-items:flex-start;background:var(--green-mist);border:1px solid var(--green-line);border-radius:.12in;padding:.14in .15in;font-size:10.5pt;line-height:1.35;color:var(--navy-soft)}
+.p-steps li>span{flex:none;display:grid;place-items:center;width:.34in;height:.34in;border-radius:50%;background:var(--green-deep);color:#fff;font:800 12pt var(--head)}
+.p-steps strong{display:block;color:var(--navy);font-size:12pt}
+
+.p-contacts{display:grid;grid-template-columns:1fr 1fr;gap:.18in;padding:0 var(--pad)}
+.p-call{border:1.5px solid var(--line-2);border-radius:.14in;padding:.16in .2in;display:flex;flex-direction:column;gap:.03in}
+.p-call small{font:700 9.5pt var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.p-call b{font:800 24pt/1.1 var(--head);color:var(--navy);letter-spacing:-.02em}
+.p-call span{font-size:10pt;color:var(--navy-soft)}
+.p-call.urgent{background:var(--red-bg);border-color:var(--red-line)}
+.p-call.urgent small,.p-call.urgent b{color:var(--red)}
+
+.p-foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.22in var(--pad);background:var(--bg);border-top:1px solid var(--line);font-size:11pt;color:var(--navy-soft)}
+.p-911{display:flex;align-items:center;gap:.08in;font-weight:600;color:var(--red)}
+.p-911 b{font-size:13pt}
+
+/* On small screens, scale the sheet to fit */
+@media (max-width:900px){
+  .poster-toolbar{flex-wrap:wrap}
+  .toolbar-mid{order:-1;flex-basis:100%}
+  .sheet-stage{overflow-x:auto;align-items:flex-start}
+  .sheet{zoom:.45}
+}
+
+@media print{
+  html,body{background:#fff!important}
+  .poster-toolbar{display:none!important}
+  .sheet-stage{padding:0;display:block}
+  .sheet{box-shadow:none;zoom:1!important;margin:0}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}

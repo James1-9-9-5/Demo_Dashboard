@@ -9,6 +9,15 @@ window.SITE = {
   community: "[Community Name]",                 // e.g. the village or reserve name
   siteName: "Maintenance Management",            // shown after the community name
 
+  // BRAND COLOURS: pick two colours from the Nation's logo and the whole site follows.
+  // primary = dark colour for buttons, header text and footer (keep it dark)
+  // accent  = highlight colour for links, icons and badges
+  // Lighter and darker shades are worked out automatically, and text is kept readable.
+  brand: {
+    primary: "#2b2e3c",
+    accent: "#58aa4b"
+  },
+
   // Logo: put the Nation's logo in /images and set its path here, e.g. "images/logo.png".
   // Leave as "" to show the "Nation's logo" placeholder.
   logo: "",
@@ -69,6 +78,18 @@ window.SITE = {
       ]
     },
     {
+      id: "inventory",
+      icon: "box",           // wrench, house, lifebuoy, box, book, truck, water, bolt or tree
+      title: "Inventory Tracker",
+      blurb: "Parts, materials and tools: what is on hand and what has moved.",
+      modes: [
+        { label: "Stock Levels", text: "What is on the shelf and what is running low.", url: "#" },
+        { label: "Transactions", text: "Items signed in and out, by date and person.", url: "#" },
+        { label: "Survey", text: "Record stock received or used.", url: "#" },
+        { label: "Dataset", text: "The full inventory table.", url: "#" }
+      ]
+    },
+    {
       id: "modules",
       icon: "book",           // wrench, house, lifebuoy, box, book, truck, water, bolt or tree
       title: "Modules",
@@ -80,19 +101,49 @@ window.SITE = {
         { label: "Module 4", text: "[Module 4 title]: a short description of what it covers.", url: "#" },
         { label: "Module 5", text: "[Module 5 title]: a short description of what it covers.", url: "#" }
       ]
-    },
-    {
-      id: "inventory",
-      icon: "box",           // wrench, house, lifebuoy, box, book, truck, water, bolt or tree
-      title: "Inventory Tracker",
-      blurb: "Parts, materials and tools: what is on hand and what has moved.",
-      modes: [
-        { label: "Stock Levels", text: "What is on the shelf and what is running low.", url: "#" },
-        { label: "Transactions", text: "Items signed in and out, by date and person.", url: "#" },
-        { label: "Survey", text: "Record stock received or used.", url: "#" },
-        { label: "Dataset", text: "The full inventory table.", url: "#" }
-      ]
     }
+  ],
+
+  // Seasonal maintenance tips (Home page). The current season is highlighted automatically.
+  seasons: [
+    { name: "Spring", months: [3, 4, 5], tips: [
+      "Check roofs and gutters for winter damage",
+      "Look for leaks under sinks and around windows",
+      "Clear drainage ditches and culverts"
+    ]},
+    { name: "Summer", months: [6, 7, 8], tips: [
+      "Clear brush and dry material away from buildings",
+      "Check decks, stairs and railings",
+      "Book exterior painting and repairs"
+    ]},
+    { name: "Fall", months: [9, 10, 11], tips: [
+      "Change furnace filters and test heating",
+      "Clean gutters and downspouts before the rain",
+      "Check weatherstripping on doors and windows"
+    ]},
+    { name: "Winter", months: [12, 1, 2], tips: [
+      "Keep vents and chimneys clear of snow",
+      "Let taps drip in deep cold to stop frozen pipes",
+      "Keep walkways sanded and salted"
+    ]}
+  ],
+
+  // Frequently asked questions (Community page)
+  faq: [
+    { q: "What should I report?",
+      a: "Anything broken, leaking, unsafe or not working in community buildings, homes, roads, walkways or equipment. If you're not sure, report it and staff will decide." },
+    { q: "Is it an emergency?",
+      a: "If anyone is in danger, call 911 first. For urgent problems like no heat in winter, a burst pipe or a power hazard, call the after-hours line rather than using the form." },
+    { q: "Who fixes what in my home?",
+      a: "This depends on your housing agreement. In general, the Maintenance Department looks after the structure, heating, plumbing and electrical systems in community-owned housing. Contact the office if you're unsure." },
+    { q: "How long will a repair take?",
+      a: "Safety problems come first. Other work is scheduled by priority, staff availability and whether parts or materials need to be ordered." },
+    { q: "Can I check on a report I've made?",
+      a: "Yes. Call or email the Maintenance Office and they can tell you where things stand." },
+    { q: "Who sees my report?",
+      a: "Only the maintenance team. Reports are not shown publicly, and your contact details are only used to follow up with you." },
+    { q: "Can I report for someone else?",
+      a: "Yes. You can report a problem on behalf of an Elder, a neighbour or a family member. Add their location and the best way to reach them." }
   ],
 
   // Rotating safety tips (home hero and Community page)
