@@ -28,8 +28,8 @@ This copy is set up as a demo for a fictional community, **Silver Creek Landing*
 
    Links left as `#` show "Link coming soon" when clicked.
 2. **Images** in `images/` (keep the same file names, or update them in the HTML):
-   - **Logo:** add the Nation's logo (e.g. `images/logo.png`) and set `logo: "images/logo.png"` in `config.js`. Until then a "Nation's logo" placeholder shows in the header and footer.
-   - `favicon.svg`, `favicon-32.png`, `apple-touch-icon.png` and the `icon-*.png` app icons are "LOGO" placeholders. Replace them with versions of the Nation's logo.
+   - **Logo:** `images/logo.png` (square PNG with a transparent background, 512×512). The demo uses the Silver Creek Landing badge. Set `logo: ""` in `config.js` to show the "Nation's logo" placeholder instead.
+   - `favicon.svg`, `favicon-32.png`, `apple-touch-icon.png` and the `icon-*.png` app icons are made from the demo badge. Replace them with versions of the Nation's logo.
    - `hero-1.jpg` to `hero-5.jpg`: home slideshow (1200 wide, landscape). Only the first loads straight away; each of the others loads just before it's shown. File names must be lowercase: GitHub Pages treats `Hero-1.jpg` and `hero-1.jpg` as different files.
    - `community.jpg` and `staff.jpg`: home card photos (1200 wide)
    - `staff-header.jpg` and `community-header.jpg`: page header photos (900 wide)

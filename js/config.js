@@ -20,7 +20,7 @@ window.SITE = {
 
   // Logo: put the Nation's logo in /images and set its path here, e.g. "images/logo.png".
   // Leave as "" to show the "Nation's logo" placeholder.
-  logo: "",
+  logo: "images/logo.png",
 
   // DEMO MODE: shows a small "Demo site" tag in the footer. Set to false for a real community.
   demo: true,
