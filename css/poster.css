@@ -15,7 +15,7 @@
 
 .p-top{display:flex;align-items:center;gap:.9rem;background:var(--navy);color:#fff;padding:.4in var(--pad) .35in;border-bottom:.09in solid var(--green)}
 .p-logo{width:.95in;height:.75in;font-size:.6rem;border-color:rgba(255,255,255,.4);background:rgba(255,255,255,.08);color:#dfe5ee}
-.p-logo-img{height:1in;width:1in;object-fit:contain}
+.p-logo-img{height:1in;width:1in;object-fit:contain;background:#fff;border-radius:8px;padding:6px}
 .p-org{display:flex;flex-direction:column;line-height:1.15}
 .p-org strong{font-family:var(--head);font-weight:800;font-stretch:112%;font-size:26pt;letter-spacing:-.02em}
 .p-org span{font-size:14pt;color:var(--green-light);font-weight:600}

@@ -3,7 +3,7 @@
   and shows a friendly offline page (with phone numbers) when there's no signal.
   Pages always load fresh when online. Bump VERSION after big updates.
 */
-var VERSION = "v9";
+var VERSION = "v11";
 var CACHE = "maint-" + VERSION;
 var CORE = [
   "./", "index.html", "staff.html", "community.html", "offline.html",

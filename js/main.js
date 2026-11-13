@@ -120,7 +120,7 @@
   var still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   // Hero slideshow: first photo loads straight away, the rest after the page has loaded
-  var photo = document.querySelector(".hero-photo");
+  var photo = document.querySelector(".hero-full, .hero-photo");
   var slides = photo ? photo.querySelectorAll(".slide") : [];
   if (slides.length) {
     var si = 0, userPaused = still, hover = false;
@@ -160,22 +160,33 @@
       var pb = photo.querySelector(".slide-pause");
       if (pb) pauseButton(pb, "slideshow", function (p) { userPaused = p; });
       if (still && pb) pb.click();
-      photo.addEventListener("mouseenter", function () { hover = true; });
-      photo.addEventListener("mouseleave", function () { hover = false; });
+      if (photo.classList.contains("hero-photo")) {
+        photo.addEventListener("mouseenter", function () { hover = true; });
+        photo.addEventListener("mouseleave", function () { hover = false; });
+      }
       setInterval(function () { if (!userPaused && !hover && !document.hidden) show(si + 1); }, 6500);
     } else if (dotsBox) dotsBox.parentNode.hidden = true;
   }
 
-  // Safety tips ticker (not read aloud on every change; can be paused)
+  // Tip ticker: the current season's maintenance tips mixed with the safety tips
+  var month = new Date().getMonth() + 1;
+  var season = (S.seasons || []).filter(function (s) { return (s.months || []).indexOf(month) > -1; })[0];
+  var seasonal = season ? season.tips.map(function (t) { return { l: season.name + " tip", t: t }; }) : [];
+  var safety = (S.safetyTips || []).map(function (t) { return { l: "Safety tip", t: t }; });
+  var TIPS = [];
+  for (var k = 0; k < Math.max(seasonal.length, safety.length); k++) {
+    if (seasonal[k]) TIPS.push(seasonal[k]);
+    if (safety[k]) TIPS.push(safety[k]);
+  }
   document.querySelectorAll(".ticker").forEach(function (box) {
-    var tips = S.safetyTips || [];
-    var out = box.querySelector(".ticker-text");
-    if (!tips.length || !out) { box.hidden = true; return; }
+    var out = box.querySelector(".ticker-text"), lbl = box.querySelector(".ticker-label .lbl");
+    if (!TIPS.length || !out) { box.hidden = true; return; }
     var ti = 0, paused = still, hover = false;
-    out.textContent = tips[0];
+    function draw() { out.textContent = TIPS[ti].t; if (lbl) lbl.textContent = TIPS[ti].l; }
+    draw();
     var tb = box.querySelector(".ticker-pause");
-    if (tips.length < 2) { if (tb) tb.hidden = true; return; }
-    if (tb) { pauseButton(tb, "safety tips", function (p) { paused = p; }); if (still) tb.click(); }
+    if (TIPS.length < 2) { if (tb) tb.hidden = true; return; }
+    if (tb) { pauseButton(tb, "tips", function (p) { paused = p; }); if (still) tb.click(); }
     box.addEventListener("mouseenter", function () { hover = true; });
     box.addEventListener("mouseleave", function () { hover = false; });
     box.addEventListener("focusin", function () { hover = true; });
@@ -183,11 +194,7 @@
     setInterval(function () {
       if (paused || hover || document.hidden) return;
       out.classList.add("out");
-      setTimeout(function () {
-        ti = (ti + 1) % tips.length;
-        out.textContent = tips[ti];
-        out.classList.remove("out");
-      }, 400);
+      setTimeout(function () { ti = (ti + 1) % TIPS.length; draw(); out.classList.remove("out"); }, 400);
     }, 7000);
   });
 

@@ -11,14 +11,14 @@ A blank, community-neutral maintenance portal: plain HTML, CSS and JavaScript, r
 - `404.html`: Not-found page
 
 ## Demo mode
-This copy is set up as a demo for a fictional community, **Silver Creek Landing**, with a small "Demo site" tag in the footer. To set it up for a real community:
+This copy is set up as a demo branded for **Tapestry Research Group**, with a small "Demo site" tag in the footer. To set it up for a real community:
 1. In `js/config.js`, set `demo: false` and change `nation`, `community`, contacts, links and photos.
-2. Replace "Silver Creek Landing" in the `<title>` and description tags at the top of each HTML file, in `poster.html`, and in `manifest.webmanifest`.
+2. Replace "Tapestry" in the `<title>` and description tags at the top of each HTML file, in `poster.html`, and in `manifest.webmanifest`.
 
 ## Make it yours
 1. **`js/config.js`** is the one file to edit:
    - **Brand colours:** set `brand.primary` (a dark colour) and `brand.accent` (a highlight colour), picked from the Nation's logo. Every button, icon, badge and tint updates, and shades are adjusted automatically so text stays readable.
-   - Seasonal maintenance tips (Home page) and the FAQ (Community page)
+   - Seasonal maintenance tips (the current season's are mixed into the tip ticker) and the FAQ (Community page)
    - `staffHelp`: who staff contact when they can't get into a tool, and the link to the system manual (Staff page)
    - Nation and community names, and an optional greeting in the Nation's language (set it to `""` to hide it)
    - The icon for each staff service (`wrench`, `house`, `lifebuoy`, `box`, `truck`, `water`, `bolt` or `tree`)
@@ -28,7 +28,7 @@ This copy is set up as a demo for a fictional community, **Silver Creek Landing*
 
    Links left as `#` show "Link coming soon" when clicked.
 2. **Images** in `images/` (keep the same file names, or update them in the HTML):
-   - **Logo:** `images/logo.png` (square PNG with a transparent background, 512×512). The demo uses the Silver Creek Landing badge. Set `logo: ""` in `config.js` to show the "Nation's logo" placeholder instead.
+   - **Logo:** `images/logo.png` (square PNG with a transparent background, 512×512). The demo uses the Tapestry logo. Set `logo: ""` in `config.js` to show the "Nation's logo" placeholder instead.
    - `favicon.svg`, `favicon-32.png`, `apple-touch-icon.png` and the `icon-*.png` app icons are made from the demo badge. Replace them with versions of the Nation's logo.
    - `hero-1.jpg` to `hero-5.jpg`: home slideshow (1200 wide, landscape). Only the first loads straight away; each of the others loads just before it's shown. File names must be lowercase: GitHub Pages treats `Hero-1.jpg` and `hero-1.jpg` as different files.
    - `community.jpg` and `staff.jpg`: home card photos (1200 wide)
@@ -55,7 +55,7 @@ The site is a Progressive Web App. On a phone, open the site and choose **Add to
 ## Photos
 Each photo's crop point and caption are set in `js/config.js` under `photos`. `focus` is "left% top%": "50% 50%" centres the crop, "30% 40%" moves it left and up. The hero captions show as a numbered field-log label (01 Waterfront homes) and change with the slideshow. Update both whenever you swap a photo.
 
-All photos share one colour grade (slightly muted colour, cool shadows, warm highlights) so images from different sources look like a set. When you swap in new photos, keep a similar look or ask for the same grade to be applied.
+All photos share one colour grade (slightly muted colour, slate-tinted shadows, soft highlights) so images from different sources look like a set. When you swap in new photos, keep a similar look or ask for the same grade to be applied.
 
 ## Publish on GitHub Pages
 1. Upload everything in this folder to the root of the repository.

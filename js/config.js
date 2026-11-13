@@ -5,8 +5,8 @@
 */
 window.SITE = {
   // Names
-  nation: "Silver Creek Landing",                       // e.g. "Example First Nation"
-  community: "Silver Creek Landing",                 // e.g. the village or reserve name
+  nation: "Tapestry Research Group",                       // e.g. "Example First Nation"
+  community: "Tapestry",                 // e.g. the village or reserve name
   siteName: "Maintenance Management",            // shown after the community name
 
   // BRAND COLOURS: pick two colours from the Nation's logo and the whole site follows.
@@ -14,8 +14,8 @@ window.SITE = {
   // accent  = highlight colour for links, icons and badges
   // Lighter and darker shades are worked out automatically, and text is kept readable.
   brand: {
-    primary: "#1d3557",
-    accent: "#e07a2f"
+    primary: "#2b2e3c",
+    accent: "#58aa4b"
   },
 
   // Logo: put the Nation's logo in /images and set its path here, e.g. "images/logo.png".
@@ -24,11 +24,11 @@ window.SITE = {
 
   // DEMO MODE: shows a small "Demo site" tag in the footer. Set to false for a real community.
   demo: true,
-  demoNote: "Sample community and content for demonstration.",
+  demoNote: "Demonstration copy of the maintenance portal by Tapestry Research Group.",
 
   // Optional greeting in the Nation's language, shown above the home headline.
   // Leave as "" to hide it.
-  greeting: "[Greeting in the Nation's language]",
+  greeting: "",
 
   // Notice banner across the top of every page (water shutoffs, closures, etc.).
   // level: "info" (green), "warning" (amber) or "alert" (red). Set show: false to hide.
@@ -116,7 +116,8 @@ window.SITE = {
     }
   ],
 
-  // Seasonal maintenance tips (Home page). The current season is highlighted automatically.
+  // Seasonal maintenance tips. The current season's tips are mixed into the safety tip
+  // ticker automatically (labelled e.g. "Fall tip"), starting with a seasonal one.
   seasons: [
     { name: "Spring", months: [3, 4, 5], tips: [
       "Check roofs and gutters for winter damage",
