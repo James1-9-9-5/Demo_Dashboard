@@ -32,6 +32,15 @@
     el.replaceWith(img);
   });
 
+  // Staff help details
+  var H = S.staffHelp || {};
+  document.querySelectorAll("[data-help]").forEach(function (el) {
+    var k = el.getAttribute("data-help");
+    if (k === "name" && H.name) el.textContent = H.name;
+    if (k === "email" && H.email) { el.href = "mailto:" + H.email; var t = el.querySelector(".mail-text"); if (t) t.textContent = H.email; }
+    if (k === "manual") { if (H.manualUrl && H.manualUrl !== "#") { el.href = H.manualUrl; el.target = "_blank"; el.rel = "noopener"; } else { el.href = "#"; el.addEventListener("click", soon); } }
+  });
+
   // Hide optional bits that are empty in config.js
   document.querySelectorAll("[data-optional]").forEach(function (el) {
     var v = S[el.getAttribute("data-optional")];
@@ -49,6 +58,12 @@
     var more = nb.querySelector(".notice-more");
     if (N.link) more.href = N.link; else more.hidden = true;
     nb.hidden = false;
+    var tog = nb.querySelector(".notice-toggle");
+    if (tog) tog.addEventListener("click", function () {
+      var open = nb.classList.toggle("expanded");
+      tog.textContent = open ? "Less" : "More";
+      tog.setAttribute("aria-expanded", open);
+    });
     nb.querySelector(".notice-close").addEventListener("click", function () {
       nb.hidden = true;
       try { sessionStorage.setItem("notice-closed", N.id); } catch (e) {}
@@ -76,35 +91,81 @@
     toggle.setAttribute("aria-expanded", open);
   });
 
-  // Hero slideshow (crossfading photos)
-  var slides = document.querySelectorAll(".hero-photo .slide");
+  // Pause / play button helper (WCAG 2.2.2: anything that changes on its own can be paused)
+  var ICON_PAUSE = '<svg class="icon" viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>', ICON_PLAY = '<svg class="icon" viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M7 5.5v13a1 1 0 0 0 1.5.9l10.5-6.5a1 1 0 0 0 0-1.8L8.5 4.6A1 1 0 0 0 7 5.5z"/></svg>';
+  function pauseButton(btn, label, onChange) {
+    var paused = false;
+    function draw() {
+      btn.innerHTML = paused ? ICON_PLAY : ICON_PAUSE;
+      btn.setAttribute("aria-label", (paused ? "Play " : "Pause ") + label);
+      btn.setAttribute("aria-pressed", paused);
+    }
+    btn.addEventListener("click", function () { paused = !paused; draw(); onChange(paused); });
+    draw();
+  }
   var still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // Hero slideshow: first photo loads straight away, the rest after the page has loaded
+  var photo = document.querySelector(".hero-photo");
+  var slides = photo ? photo.querySelectorAll(".slide") : [];
   if (slides.length) {
-    var si = 0;
+    var si = 0, userPaused = still, hover = false;
     slides[0].classList.add("active");
-    if (!still && slides.length > 1) setInterval(function () {
+    // Load each photo just before it's needed, so the first visit only downloads one
+    var load = function (i) { var s = slides[i % slides.length]; if (s && s.dataset.src) { s.src = s.dataset.src; s.removeAttribute("data-src"); } };
+    var warm = function () { setTimeout(function () { load(1); }, 2500); };
+    if (document.readyState === "complete") warm(); else window.addEventListener("load", warm);
+    var dotsBox = photo.querySelector(".slide-dots");
+    var dots = [];
+    function show(i) {
       slides[si].classList.remove("active");
-      si = (si + 1) % slides.length;
+      if (dots[si]) dots[si].setAttribute("aria-current", "false");
+      si = (i + slides.length) % slides.length;
+      load(si); load(si + 1);
       slides[si].classList.add("active");
-    }, 6500);
+      if (dots[si]) dots[si].setAttribute("aria-current", "true");
+    }
+    if (dotsBox && slides.length > 1) {
+      slides.forEach(function (s, i) {
+        var d = document.createElement("button");
+        d.type = "button"; d.className = "dot";
+        d.setAttribute("aria-label", "Show photo " + (i + 1) + " of " + slides.length);
+        d.setAttribute("aria-current", i === 0 ? "true" : "false");
+        d.addEventListener("click", function () { show(i); });
+        dotsBox.appendChild(d); dots.push(d);
+      });
+      var pb = photo.querySelector(".slide-pause");
+      if (pb) pauseButton(pb, "slideshow", function (p) { userPaused = p; });
+      if (still && pb) pb.click();
+      photo.addEventListener("mouseenter", function () { hover = true; });
+      photo.addEventListener("mouseleave", function () { hover = false; });
+      setInterval(function () { if (!userPaused && !hover && !document.hidden) show(si + 1); }, 6500);
+    } else if (dotsBox) dotsBox.parentNode.hidden = true;
   }
 
-  // Safety tips ticker
+  // Safety tips ticker (not read aloud on every change; can be paused)
   document.querySelectorAll(".ticker").forEach(function (box) {
     var tips = S.safetyTips || [];
     var out = box.querySelector(".ticker-text");
     if (!tips.length || !out) { box.hidden = true; return; }
-    var ti = 0;
+    var ti = 0, paused = still, hover = false;
     out.textContent = tips[0];
-    if (still || tips.length < 2) return;
+    var tb = box.querySelector(".ticker-pause");
+    if (tips.length < 2) { if (tb) tb.hidden = true; return; }
+    if (tb) { pauseButton(tb, "safety tips", function (p) { paused = p; }); if (still) tb.click(); }
+    box.addEventListener("mouseenter", function () { hover = true; });
+    box.addEventListener("mouseleave", function () { hover = false; });
+    box.addEventListener("focusin", function () { hover = true; });
+    box.addEventListener("focusout", function () { hover = false; });
     setInterval(function () {
+      if (paused || hover || document.hidden) return;
       out.classList.add("out");
       setTimeout(function () {
         ti = (ti + 1) % tips.length;
         out.textContent = tips[ti];
         out.classList.remove("out");
       }, 400);
-    }, 6000);
+    }, 7000);
   });
 
   // Duotone icon set: 24px grid, 1.75 stroke, soft tinted fill behind the line work
@@ -156,8 +217,8 @@
       function select(i) {
         var m = svc.modes[i];
         card.querySelectorAll("[role=tab]").forEach(function (b, j) { b.setAttribute("aria-selected", i === j); });
-        panel.querySelector(".icon-badge").innerHTML = svg(m.label, 24);
-        panel.querySelector("strong").textContent = /^Module/.test(m.label) ? "Open " + m.label : "Open " + m.label.toLowerCase();
+        panel.querySelector(".icon-badge").innerHTML = svg(m.icon || m.label, 24);
+        panel.querySelector("strong").textContent = m.title || ("Open " + m.label.toLowerCase());
         panel.querySelector(".tool-copy span").textContent = m.text;
         var real = m.url && m.url !== "#";
         panel.href = real ? m.url : "#";

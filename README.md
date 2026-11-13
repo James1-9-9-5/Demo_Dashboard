@@ -14,6 +14,7 @@ A blank, community-neutral maintenance portal: plain HTML, CSS and JavaScript, r
 1. **`js/config.js`** is the one file to edit:
    - **Brand colours:** set `brand.primary` (a dark colour) and `brand.accent` (a highlight colour), picked from the Nation's logo. Every button, icon, badge and tint updates, and shades are adjusted automatically so text stays readable.
    - Seasonal maintenance tips (Home page) and the FAQ (Community page)
+   - `staffHelp`: who staff contact when they can't get into a tool, and the link to the system manual (Staff page)
    - Nation and community names, and an optional greeting in the Nation's language (set it to `""` to hide it)
    - The icon for each staff service (`wrench`, `house`, `lifebuoy`, `box`, `truck`, `water`, `bolt` or `tree`)
    - The **notice banner** text, its colour (`info`, `warning` or `alert`), and on/off. Change `id` whenever you post a new notice.
@@ -24,14 +25,18 @@ A blank, community-neutral maintenance portal: plain HTML, CSS and JavaScript, r
 2. **Images** in `images/` (keep the same file names, or update them in the HTML):
    - **Logo:** add the Nation's logo (e.g. `images/logo.png`) and set `logo: "images/logo.png"` in `config.js`. Until then a "Nation's logo" placeholder shows in the header and footer.
    - `favicon.svg`, `favicon-32.png`, `apple-touch-icon.png` and the `icon-*.png` app icons are "LOGO" placeholders. Replace them with versions of the Nation's logo.
-   - `hero-1.jpg` to `hero-5.jpg`: home slideshow (about 1400 wide, landscape). File names must be lowercase: GitHub Pages treats `Hero-1.jpg` and `hero-1.jpg` as different files.
+   - `hero-1.jpg` to `hero-5.jpg`: home slideshow (1200 wide, landscape). Only the first loads straight away; each of the others loads just before it's shown. File names must be lowercase: GitHub Pages treats `Hero-1.jpg` and `hero-1.jpg` as different files.
    - `community.jpg` and `staff.jpg`: home card photos (1200 wide)
-   - `staff-header.jpg` and `community-header.jpg`: page header photos (1200 wide)
+   - `staff-header.jpg` and `community-header.jpg`: page header photos (900 wide)
    - `og.png`: the preview image when the link is shared (1200×630)
 
    Keep photos under about 250 KB each so the site loads quickly on slower connections.
-3. **Page titles:** the `<title>` and description tags at the top of each HTML file contain `[Community Name]` and `[Nation Name]`. Replace them by hand so search engines and link previews show the real names.
-4. **Colours** are at the top of `css/style.css` (`--navy`, `--green` and so on). Text colours have been checked against WCAG AA contrast.
+3. **Your web address:** the link-preview tags (`og:image`, `og:url`) in each HTML file use `https://demo.jamesspooner.org`. Change this to the Nation's domain when you set up a new copy, or link previews won't show the image.
+4. **Page titles:** the `<title>` and description tags at the top of each HTML file contain `[Community Name]` and `[Nation Name]`. Replace them by hand so search engines and link previews show the real names.
+5. **Colours** are at the top of `css/style.css` (`--navy`, `--green` and so on). Text colours have been checked against WCAG AA contrast.
+
+## Fonts
+Inter and Plus Jakarta Sans are stored in `/fonts` (no Google Fonts connection needed), under the SIL Open Font License. Licence files are in the same folder.
 
 ## Install to phone
 The site is a Progressive Web App. On a phone, open the site and choose **Add to Home Screen** (Safari share menu on iPhone, or the ⋮ menu → **Install app** on Android). It then opens full-screen like an app, and if there's no signal it shows `offline.html` with the phone numbers. This only works on the live https site, not when opening the files locally.

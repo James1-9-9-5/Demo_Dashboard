@@ -9,32 +9,33 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="Staff Tools | [Community Name] Maintenance Management">
   <meta property="og:description" content="Dashboards, surveys, reports and records for maintenance staff.">
-  <meta property="og:image" content="images/og.png">
+  <meta property="og:image" content="https://demo.jamesspooner.org/images/og.png">
+  <meta property="og:url" content="https://demo.jamesspooner.org/staff.html">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" href="fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/plus-jakarta-sans-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/fonts.css?v=1">
   <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
   <link rel="manifest" href="manifest.webmanifest">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="Maintenance">
-  <link rel="stylesheet" href="css/style.css?v=3">
-  <script src="js/config.js?v=3"></script>
+  <link rel="stylesheet" href="css/style.css?v=4">
+  <script src="js/config.js?v=4"></script>
   <script src="js/brand.js?v=1"></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <div id="notice" class="notice" role="status" hidden>
-  <div class="wrap"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8v.01"/></svg><span class="notice-text"></span><a class="notice-more" href="#">More details</a><button class="notice-close" type="button" aria-label="Close notice"><svg class="icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <div class="wrap"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8v.01"/></svg><span class="notice-text"></span><button class="notice-toggle" type="button" aria-expanded="false">More</button><a class="notice-more" href="#">More details</a><button class="notice-close" type="button" aria-label="Close notice"><svg class="icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
 </div>
 <header class="site-header">
   <div class="header-inner">
     <a class="brand" href="index.html"><span class="logo-slot" data-logo><span>Nation's<br>logo</span></span><span class="brand-text"><strong data-site="community">[Community Name]</strong><small data-site="siteName">Maintenance Management</small></span></a>
     <nav class="nav" id="site-nav" aria-label="Main">
       <a href="index.html">Home</a><a href="staff.html" aria-current="page">Staff</a><a href="community.html">Community</a>
-      <a class="nav-report" href="#" data-report>Report a problem</a>
+      <a class="nav-report" href="community.html">Report a problem</a>
     </nav>
     <button class="nav-toggle" aria-controls="site-nav" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>Menu</button>
   </div>
@@ -43,7 +44,7 @@
 <section class="page-head">
   <div class="wrap">
     <div>
-      <ol class="crumbs"><li><a href="index.html">Home</a></li><li aria-current="page">Staff</li></ol>
+      <p class="kicker">Staff</p>
       <h1>Staff tools</h1>
       <p class="lead">Every dashboard, survey, report and dataset in one place. Pick a service, choose a view, and open it.</p>
     </div>
@@ -53,6 +54,7 @@
 <section class="section tight">
   <div class="wrap">
     <p class="signin-note"><svg class="icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg><span>These tools need an authorised account, and you'll be asked to sign in when one opens. If you can't get in, contact the <span data-site="officeLabel">Maintenance Office</span>.</span></p>
+    <h2 class="sr-only">Services</h2>
     <nav class="jump" id="service-jump" aria-label="Services"></nav>
     <div class="tool-grid" id="service-grid">
       <noscript><p>Turn on JavaScript to see the staff tools.</p></noscript>
@@ -63,14 +65,14 @@
   <div class="wrap">
     <div class="contact-panel" data-reveal>
       <div>
-        <p class="kicker">Need help?</p>
-        <h2>Something wrong?</h2>
-        <p>Report it online any time, or call the office during working hours. If anyone is in danger, call 911 first.</p>
-        <a class="btn btn-green" href="#" data-report>Report a problem <svg class="icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <p class="kicker">Staff support</p>
+        <h2>Can't get in?</h2>
+        <p>If a tool won't open or your account doesn't work, contact <span data-help="name">the system administrator</span>. For how the system works, see the manual.</p>
+        <a class="more" href="#" data-help="manual">Open the system manual <svg class="icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
       <div class="contact-list">
+        <a class="call" href="#" data-help="email"><span class="badge"><svg class="icon duo" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><g class="duo-fill" fill="currentColor" stroke="none"><rect x="3" y="5" width="18" height="14" rx="2.5"/></g><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 7l8.5 6 8.5-6"/></svg></span><span><small>Account and access help</small><b class="mail-text">admin@example.org</b></span></a>
         <a class="call" href="#" data-tel="officePhone"><span class="badge"><svg class="icon duo" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><g class="duo-fill" fill="currentColor" stroke="none"><path d="M5 3.5h3.5l2 5-2.5 1.5a11 11 0 0 0 6 6l1.5-2.5 5 2V19a2 2 0 0 1-2 2A17 17 0 0 1 3 5.5a2 2 0 0 1 2-2z"/></g><path d="M5 3.5h3.5l2 5-2.5 1.5a11 11 0 0 0 6 6l1.5-2.5 5 2V19a2 2 0 0 1-2 2A17 17 0 0 1 3 5.5a2 2 0 0 1 2-2z"/></svg></span><span><small data-site="officeLabel">Maintenance Office</small><b class="tel-num">000-000-0000</b></span></a>
-        <a class="call urgent" href="#" data-tel="emergencyPhone"><span class="badge"><svg class="icon duo" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><g class="duo-fill" fill="currentColor" stroke="none"><path d="M12 3.5L21.5 20h-19z"/></g><path d="M10.3 4.5a2 2 0 0 1 3.4 0l8 14A2 2 0 0 1 20 21.5H4a2 2 0 0 1-1.7-3z"/><path d="M12 10v4.5M12 17.5v.01"/></svg></span><span><small>After-hours emergency line</small><b class="tel-num">000-000-0000</b></span></a>
       </div>
     </div>
   </div>
@@ -87,7 +89,7 @@
       <a href="index.html">Home</a>
       <a href="staff.html">Staff tools</a>
       <a href="community.html">Community</a>
-      <a href="#" data-report>Report a problem</a>
+      <a href="community.html">Report a problem</a>
       <a href="poster.html">Printable poster</a>
     </nav>
     <div class="footer-contact">
@@ -102,6 +104,6 @@
     <span>Last updated <span data-site="lastUpdated">2026</span></span>
   </div>
 </footer>
-<script src="js/main.js?v=3"></script>
+<script src="js/main.js?v=4"></script>
 </body>
 </html>

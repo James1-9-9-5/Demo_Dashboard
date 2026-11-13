@@ -30,7 +30,7 @@ window.SITE = {
   // level: "info" (green), "warning" (amber) or "alert" (red). Set show: false to hide.
   notice: {
     show: true,
-    level: "info",
+    level: "info",        // info (blue-grey), warning (amber) or alert (red)
     text: "Example notice: the Maintenance Office is closed on Friday. Urgent problems can still be reported online.",
     link: "",              // optional URL for "More details"
     id: "notice-1"         // change this when you post a new notice so people who closed the old one see it
@@ -46,6 +46,13 @@ window.SITE = {
   emergencyPhone: "000-000-0000",
   officeEmail: "maintenance@example.org",
   officeHours: "Monday to Friday, 8:30 am – 4:30 pm",
+
+  // Help for staff who can't get into the tools (shown at the bottom of the Staff page)
+  staffHelp: {
+    name: "[System administrator]",
+    email: "admin@example.org",
+    manualUrl: "#"          // link to the system manual or Module 4
+  },
 
   // Public report form (e.g. a public Survey123 link). No sign-in needed.
   reportUrl: "#",
@@ -94,12 +101,13 @@ window.SITE = {
       icon: "book",           // wrench, house, lifebuoy, box, book, truck, water, bolt or tree
       title: "Modules",
       blurb: "Reference modules for the maintenance system: how it works, how to use it, and how work is planned and reviewed.",
+      // label = short tab name, title = button text, icon = optional (book by default for modules)
       modes: [
-        { label: "Module 1", text: "[Module 1 title]: a short description of what it covers.", url: "#" },
-        { label: "Module 2", text: "[Module 2 title]: a short description of what it covers.", url: "#" },
-        { label: "Module 3", text: "[Module 3 title]: a short description of what it covers.", url: "#" },
-        { label: "Module 4", text: "[Module 4 title]: a short description of what it covers.", url: "#" },
-        { label: "Module 5", text: "[Module 5 title]: a short description of what it covers.", url: "#" }
+        { label: "Introduction", title: "Module 1: Introduction", icon: "book", text: "Purpose of the plan and how to use these modules.", url: "#" },
+        { label: "Asset Inventory", title: "Module 2: Asset Inventory", icon: "book", text: "What the community owns and where it is.", url: "#" },
+        { label: "Condition & Risk", title: "Module 3: Condition & Risk", icon: "book", text: "How assets are rated and which risks come first.", url: "#" },
+        { label: "The System", title: "Module 4: Asset Management System", icon: "book", text: "How the dashboards, surveys and records fit together.", url: "#" },
+        { label: "Planning", title: "Module 5: Maintenance Planning", icon: "book", text: "Scheduling, review and monitoring of maintenance work.", url: "#" }
       ]
     }
   ],

@@ -6,7 +6,8 @@
   --navy-hover:#344968;
   --green:#e07a2f; --green-deep:#a45a22; --green-hover:#914f1e; --green-ink:#794219;
   --green-tint:#faebe0; --green-mist:#fdf6f0; --green-line:#f6dac5; --green-light:#f1c3a1; --green-glow:rgba(164,90,34,.35);
-  --bg:#f6f7f4; --surface:#ffffff; --ink:#1b1e27; --muted:#5a6070; --line:#e2e6df; --line-2:#d3d9cf;
+  --bg:#f5f6f8; --surface:#ffffff; --ink:#1a1f2b; --muted:#5a6273; --line:#e3e7ed; --line-2:#d2d8e1;
+  --info:#2c3e55; --info-bg:#eef2f7; --info-line:#d6dee9;
   --amber:#8a5a00; --amber-bg:#fff4dc; --amber-line:#f0d08a;
   --red:#a33a1c; --red-bg:#fcebe5; --red-line:#efbfae;
   --head:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
@@ -36,7 +37,7 @@ img{max-width:100%;display:block}
 .btn .duo .duo-fill,.tool-panel:hover .duo .duo-fill{opacity:.2}
 
 /* Logo placeholder (swapped for the real logo when config.logo is set) */
-.logo-slot{display:grid;place-items:center;width:58px;height:46px;flex:none;border:1.5px dashed #a9b2a6;border-radius:10px;background:repeating-linear-gradient(135deg,#f3f5f1 0 6px,#fff 6px 12px);color:var(--muted);font:700 .56rem/1.1 var(--body);text-transform:uppercase;letter-spacing:.04em;text-align:center}
+.logo-slot{display:grid;place-items:center;width:58px;height:46px;flex:none;border:1.5px dashed #a8b1bf;border-radius:10px;background:repeating-linear-gradient(135deg,#f1f3f7 0 6px,#fff 6px 12px);color:var(--muted);font:700 .56rem/1.1 var(--body);text-transform:uppercase;letter-spacing:.04em;text-align:center}
 .logo-slot.sm{width:54px;height:42px;border-color:rgba(255,255,255,.35);background:rgba(255,255,255,.06);color:#c3c9d4}
 .logo-img{height:46px;width:auto;max-width:120px;flex:none;object-fit:contain}
 .logo-img.sm{height:42px;background:#fff;border-radius:10px;padding:3px}
@@ -49,7 +50,7 @@ img{max-width:100%;display:block}
 .notice-more{font-weight:600;white-space:nowrap;color:inherit}
 .notice-close{background:none;border:0;color:inherit;cursor:pointer;padding:.25rem;border-radius:6px;display:grid;place-items:center;opacity:.75}
 .notice-close:hover{opacity:1;background:rgba(0,0,0,.06)}
-.notice-info{background:var(--green-mist);color:var(--green-ink);border-color:var(--green-line)}
+.notice-info{background:var(--info-bg);color:var(--info);border-color:var(--info-line)}
 .notice-warning{background:var(--amber-bg);color:var(--amber);border-color:var(--amber-line)}
 .notice-alert{background:var(--red-bg);color:var(--red);border-color:var(--red-line)}
 
@@ -315,3 +316,73 @@ a:has(.soon){position:relative}
 }
 @media (max-width:640px){ .season-grid{grid-template-columns:1fr} }
 @media print{ .faq-item{break-inside:avoid} .faq-item .faq-a{display:block} .poster-promo{display:none} }
+
+/* ---- Audit fixes (v8) ---- */
+.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+h1,h2,h3{text-wrap:balance}
+p,li,.lead{text-wrap:pretty}
+
+/* Notice: one line on phones with a More toggle */
+.notice-toggle{display:none;background:none;border:0;padding:.1rem .2rem;font:600 .95rem var(--body);color:inherit;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+
+/* Hero headline */
+.hero-kicker{margin-bottom:.5rem}
+.hero h1{font-size:clamp(2rem,3.6vw,2.9rem)}
+
+/* Slideshow controls */
+.slide-ctrl{position:absolute;right:1rem;bottom:1rem;z-index:3;display:flex;align-items:center;gap:.6rem;background:rgba(255,255,255,.94);padding:.35rem .6rem .35rem .4rem;border-radius:999px;box-shadow:0 2px 8px rgba(20,25,40,.18)}
+.slide-pause,.ticker-pause{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;border:0;cursor:pointer;flex:none}
+.slide-pause{background:var(--navy);color:#fff}
+.slide-dots{display:flex;gap:.35rem}
+.slide-dots{gap:0}
+.dot{position:relative;width:24px;height:24px;padding:0;border:0;background:none;cursor:pointer;flex:none}
+.dot::before{content:"";position:absolute;left:50%;top:50%;width:8px;height:8px;margin:-4px 0 0 -4px;border-radius:999px;background:#b8c0cc;transition:width .25s,margin .25s,background .25s}
+.dot[aria-current="true"]::before{width:18px;margin-left:-9px;background:var(--navy)}
+.dot:focus-visible,.slide-pause:focus-visible{outline-offset:2px}
+.ticker-pause{margin-left:auto;background:rgba(255,255,255,.1);color:#fff}
+.ticker-pause:hover{background:rgba(255,255,255,.2)}
+.ticker .ticker-text{flex:1}
+
+/* Contact panel link */
+.contact-panel .more{margin-top:0}
+
+/* Offline page */
+.wrap.narrow{max-width:720px}
+.lead-plain{font-size:1.15rem;color:var(--navy-soft)}
+.offline-calls{margin:1.5rem 0}
+
+@media (max-width:980px){
+  .hero-photo{aspect-ratio:auto;height:clamp(220px,42vw,360px)}
+}
+@media (max-width:640px){
+  .notice-toggle{display:inline}
+  .notice .wrap{align-items:center}
+  .notice:not(.expanded) .notice-text{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+  .notice:not(.expanded) .notice-more{display:none}
+  .notice.expanded .wrap{flex-wrap:wrap}
+  .hero-photo{height:220px}
+  .slide-ctrl{right:.75rem;bottom:.75rem}
+  .photo-tag{left:.75rem;bottom:.75rem}
+  /* Chips and tabs scroll sideways in one row instead of wrapping */
+  .jump,.tool-tabs{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .jump::-webkit-scrollbar,.tool-tabs::-webkit-scrollbar{display:none}
+  .jump{margin-left:-1.5rem;margin-right:-1.5rem;padding:0 1.5rem}
+  .jump a,.tool-tabs button{flex:none;white-space:nowrap}
+  .tipbar .wrap.ticker{flex-direction:row;flex-wrap:wrap;align-items:center}
+  .tipbar .ticker-text{flex-basis:100%;order:3}
+  .tipcard{flex-direction:row!important;flex-wrap:wrap;align-items:center!important}
+  .tipcard .ticker-text{flex-basis:100%;order:3}
+}
+@media print{ .slide-ctrl,.ticker-pause,.notice-toggle{display:none!important} }
+.greeting{color:var(--navy-soft);font-weight:600}
+.brand-text small{white-space:nowrap}
+@media (max-width:640px){
+  .hero h1{font-size:1.9rem}
+  .hero-kicker span{display:block}
+  .hero-kicker .sep{display:none}
+}
+.more{display:inline-flex;align-items:center;gap:.35rem;font-weight:600;color:var(--green-deep);text-decoration:none}
+.more:hover{text-decoration:underline;text-underline-offset:3px}
+.more .icon{width:18px;height:18px;transition:transform .15s}
+.more:hover .icon{transform:translateX(3px)}
+.contact-panel .kicker{color:var(--green-deep)}
